@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
     public double moveSpeed = 0.2;
-    Vector3 topLeft;
-    Vector3 bottomRight;
+
+    private Vector3 topLeft;
+    private Vector3 bottomRight;
+
     void Start() {
-		topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
     }
 
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour {
             newPosition.x = Mathf.Clamp(newPosition.x, topLeft.x, bottomRight.x);
             newPosition.y = Mathf.Clamp(newPosition.y, topLeft.y, bottomRight.y);
 
-			transform.position = newPosition;
+            transform.position = newPosition;
         }
     }
 }
