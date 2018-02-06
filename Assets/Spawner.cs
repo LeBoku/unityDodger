@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
 		topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
-        InvokeRepeating("SpawnEnemy", 0, spawnSpeed);
+        InvokeRepeating("SpawnEnemy", spawnSpeed, spawnSpeed);
     }
 
     void SpawnEnemy() {
@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour {
         }
 		
         var mob = Instantiate(enemy);
-		mob.transform.position = spawnPosition;
+		mob.transform.localPosition = spawnPosition;
     }
 
 	float getRandomX (){

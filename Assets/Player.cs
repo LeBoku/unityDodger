@@ -20,16 +20,14 @@ public class Player : MonoBehaviour {
 
         if (direction.magnitude > 0) {
             direction.Normalize();
+            transform.localRotation = direction.ToRotation();
 
-            var directionAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-            transform.localRotation = Quaternion.Euler(0, 0, directionAngle);
-
-            var newPosition = transform.position + direction * (float)moveSpeed;
+            var newPosition = transform.localPosition + direction * (float)moveSpeed;
 
             newPosition.x = Mathf.Clamp(newPosition.x, topLeft.x, bottomRight.x);
             newPosition.y = Mathf.Clamp(newPosition.y, topLeft.y, bottomRight.y);
 
-            transform.position = newPosition;
+            transform.localPosition = newPosition;
         }
     }
 }
