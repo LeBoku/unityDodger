@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
             direction.Normalize();
             transform.localRotation = direction.ToRotation();
 
-            var newPosition = transform.localPosition + direction * (float)moveSpeed;
+            var newPosition = transform.localPosition + (direction * (float)moveSpeed) * Time.deltaTime;
 
             newPosition.x = Mathf.Clamp(newPosition.x, topLeft.x, bottomRight.x);
             newPosition.y = Mathf.Clamp(newPosition.y, topLeft.y, bottomRight.y);

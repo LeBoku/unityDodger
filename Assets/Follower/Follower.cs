@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Follower : MonoBehaviour {
     public float rotationSpeed;
     public float speed;
 
