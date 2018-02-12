@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Follower : MonoBehaviour {
-    public float rotationSpeed;
-    public float speed;
+    public float initialRotationSpeed;
+    public float initialSpeed;
+    public float aggressionThreshold;
 
     private GameObject player;
 
@@ -14,11 +15,20 @@ public class Follower : MonoBehaviour {
     }
 
     void Update() {
-        LookAtPlayer();
+        MoveTowardsPlayer();
     }
 
-    void LookAtPlayer() {
+    void MoveTowardsPlayer() {
         var playerDirection = player.transform.position - transform.position;
+
+        float rotationSpeed = initialRotationSpeed;
+        float speed = initialSpeed;
+
+        if (playerDirection.magnitude < aggressionThreshold) {
+            rotationSpeed /= 2;
+            speed *= 2;
+        }
+
         var rotation = Quaternion.RotateTowards(transform.localRotation, playerDirection.ToRotation(), rotationSpeed * Time.deltaTime);
 
         transform.localRotation = rotation;
