@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStartPosition: {x: 0, y: -4, z: 0}
-  scoreText: {fileID: 143934247}
-  gameText: {fileID: 1217510662}
+  scoreLabel: {fileID: 143934247}
+  gameTextLabel: {fileID: 1217510662}
   player: {fileID: 1451261049}
 --- !u!4 &258738138
 Transform:
