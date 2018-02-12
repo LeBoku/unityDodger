@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4180233224736228}
   - component: {fileID: 212534197260279484}
   - component: {fileID: 114750389021900902}
+  - component: {fileID: 95881110819742558}
   m_Layer: 0
   m_Name: Follower
   m_TagString: Untagged
@@ -41,6 +42,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95881110819742558
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385957265698278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: afe2893fbe20ba548abe096bb8b1e008, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114750389021900902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee96ba7d4a6db73469b5623fbcb68829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialRotationSpeed: 0
-  initialSpeed: 0
-  aggressionThreshold: 0
+  initialRotationSpeed: 90
+  initialSpeed: 2
+  aggressionThreshold: 4
 --- !u!212 &212534197260279484
 SpriteRenderer:
   m_ObjectHideFlags: 1
