@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public double moveSpeed = 0.2;
+    public double moveSpeed;
 
     private Vector3 topLeft;
     private Vector3 bottomRight;
@@ -29,5 +29,13 @@ public class Player : MonoBehaviour {
 
             transform.localPosition = newPosition;
         }
+    }
+
+    void OnTriggerEnter(){
+        print("test");
+    }
+
+    void OnCollisionEnter(){
+        print("collision");
     }
 }

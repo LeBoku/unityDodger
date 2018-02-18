@@ -9,10 +9,12 @@ public class Follower : MonoBehaviour {
 
     private GameObject player;
     private Animator stateMachine;
+    private Rigidbody2D body;
 
     void Start() {
         player = GameObject.FindWithTag("Player");
         stateMachine = GetComponent<Animator>();
+        body = GetComponent<Rigidbody2D>();
         transform.localRotation = (player.transform.position - transform.position).ToRotation();
     }
 
@@ -38,7 +40,15 @@ public class Follower : MonoBehaviour {
         var rotation = Quaternion.RotateTowards(transform.localRotation, playerDirection.ToRotation(), rotationSpeed * Time.deltaTime);
 
         transform.localRotation = rotation;
-        transform.localPosition += rotation.ToDirection() * (speed * Time.deltaTime);
+        body.AddForce(rotation.ToDirection() * (speed * Time.deltaTime));
+        // transform.localPosition += rotation.ToDirection() * (speed * Time.deltaTime);
+    }
 
+    void OnTriggerEnter(){
+        Debug.Log("test");
+    }
+
+    void OnCollisionEnter(){
+        Debug.Log("collision");
     }
 }
