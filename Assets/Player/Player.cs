@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public double moveSpeed;
+    public GameObject manager;
 
     private Vector3 topLeft;
     private Vector3 bottomRight;
@@ -31,11 +32,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter(){
-        print("test");
-    }
-
-    void OnCollisionEnter(){
-        print("collision");
+    void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "Enemy"){
+            manager.SendMessage("GameOver");
+        }
     }
 }

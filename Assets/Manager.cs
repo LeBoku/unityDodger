@@ -11,13 +11,13 @@ public class Manager : MonoBehaviour {
 
     public GameObject player;
 
-	private Text scoreLabelText;
+    private Text scoreLabelText;
 
     private bool isRunning = false;
     private float score = 0;
 
     void Start() {
-		scoreLabelText = scoreLabel.GetComponent<Text>();
+        scoreLabelText = scoreLabel.GetComponent<Text>();
         SetSpawnerState(false);
         player.GetComponent<Player>().enabled = false;
     }
@@ -44,9 +44,20 @@ public class Manager : MonoBehaviour {
         player.GetComponent<Player>().enabled = true;
     }
 
+    void GameOver() {
+        isRunning = false;
+
+        foreach (var actor in GetAllActors()) {
+            actor.GetComponent<MonoBehaviour>().enabled = false;
+        }
+
+        SetSpawnerState(false);
+        gameTextLabel.SetActive(true);
+    }
+
     void UpdateScore() {
         score += Time.deltaTime;
-		scoreLabelText.text = score.ToString("F2");
+        scoreLabelText.text = score.ToString("F2");
     }
 
     void SetSpawnerState(bool toState) {
@@ -55,8 +66,15 @@ public class Manager : MonoBehaviour {
         }
     }
 
+    List<GameObject> GetAllActors() {
+        var actors = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        actors.AddRange(new List<GameObject>(GameObject.FindGameObjectsWithTag("Obstacle")));
+
+        return actors;
+    }
+
     void DestroyEnemies() {
-        foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+        foreach (var enemy in GetAllActors()) {
             GameObject.Destroy(enemy);
         }
     }

@@ -12,8 +12,6 @@ public class Spawner : MonoBehaviour {
     void Start() {
 		topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-
-        InvokeRepeating("SpawnEnemy", spawnSpeed, spawnSpeed);
     }
 
     void SpawnEnemy() {
@@ -41,6 +39,14 @@ public class Spawner : MonoBehaviour {
 		
         var mob = Instantiate(enemy);
 		mob.transform.localPosition = spawnPosition;
+    }
+
+    void OnEnable(){
+        InvokeRepeating("SpawnEnemy", spawnSpeed, spawnSpeed);
+    }
+
+    void OnDisable(){
+        CancelInvoke();
     }
 
 	float getRandomX (){

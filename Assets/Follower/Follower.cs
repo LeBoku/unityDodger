@@ -18,7 +18,7 @@ public class Follower : MonoBehaviour {
         transform.localRotation = (player.transform.position - transform.position).ToRotation();
     }
 
-    void Update() {
+    void FixedUpdate() {
         MoveTowardsPlayer();
     }
 
@@ -40,15 +40,6 @@ public class Follower : MonoBehaviour {
         var rotation = Quaternion.RotateTowards(transform.localRotation, playerDirection.ToRotation(), rotationSpeed * Time.deltaTime);
 
         transform.localRotation = rotation;
-        body.AddForce(rotation.ToDirection() * (speed * Time.deltaTime));
-        // transform.localPosition += rotation.ToDirection() * (speed * Time.deltaTime);
-    }
-
-    void OnTriggerEnter(){
-        Debug.Log("test");
-    }
-
-    void OnCollisionEnter(){
-        Debug.Log("collision");
+        transform.localPosition += rotation.ToDirection() * (speed * Time.deltaTime);
     }
 }
