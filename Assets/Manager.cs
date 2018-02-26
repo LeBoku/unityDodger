@@ -26,7 +26,7 @@ public class Manager : MonoBehaviour {
         if (isRunning) {
             UpdateScore();
         } else {
-            if (Input.anyKey) {
+            if (Input.anyKey || Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) {
                 StartGame();
             }
         }
